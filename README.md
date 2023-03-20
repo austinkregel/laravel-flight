@@ -28,15 +28,34 @@ php artisan vendor:publish --provider=Kregel\\Flight\\FlightServiceProvider
 ```
 Find a [socialite provider](https://socialiteproviders.com/about/) you wish to use
 
-Add their ExtendSocialite event to our config file.
+Add their ExtendSocialite event to our config file under the `community_drivers` section, and if you wish to make it your primary driver, set your `FLIGHT_DRIVER`
 
-## Usage
-The whole point of this is to drastically decrease the time to deploy for integrating a very basic OAuth client
+## Post setup
+You'll want to verify that you have your  `web` middleware configured. And you'll want the `auth` middleware too, so Laravel will redirect you to your auth provider.
 
-To add support for different OAuth clients, you'll need to add
+If you're reading a headless type of system and have removed those middlewares here's basically the same stuff.
+
+In your `app/Http/Kernel.php` the `web` middleware would basically be 
 ```php
-// Usage description here
+    protected $middlewareGroups = [
+        'web' => [
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \Illuminate\Foundation\Http\Middleware\VerifyCsrfToke::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
 ```
+
+And under the `$middlewareAliases` portion you can add the following replacement for `App\Http\Middleware\Authenticate`
+
+```php
+'auth' => \Kregel\Flight\Middleware\Authenticate::class,
+'guest' => \Kregel\Flight\Middleware\RedirectIfAuthenticated::class,
+```
+Both of the above middleware are almost directly taken from the base Laravel app, with minor adjustments for configuration.
 
 ### Testing
 
