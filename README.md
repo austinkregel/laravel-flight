@@ -83,6 +83,8 @@ Lastly, change your `FLIGHT_DRIVER` env var to your preferred driver.
 
 And visit `http://yourwebsite/flight/login`
 
+If you haven't already set up the redirect url or callback url  `http://yourwebsite/flight/callback`
+
 ### Testing
 
 ```bash
