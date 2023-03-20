@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get(
-    config('laravel-flight.prefix').'/login',
+    config('laravel-flight.prefix').config('laravel-flight.login_redirect'),
     Kregel\Flight\Controllers\LoginController::class
 )->name('flight.login');
 
