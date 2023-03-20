@@ -14,9 +14,10 @@ return new class extends Migration
             $table->string('service_id');
             $table->timestamps();
 
-            $table->unique(['user_id', 'service_id'] );
+            $table->unique(['user_id', 'service_id']);
         });
     }
+
     public function down()
     {
         Schema::dropIfExists('social_logins');

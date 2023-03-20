@@ -16,7 +16,7 @@ class TestCase extends TestbenchTestCase
         config()->set('services.github', [
             'client_id' => 4820802,
             'client_secret' => 'asdfkjlli4j2oirj2lk4efakf',
-            'redirect' => route('flight.callback')
+            'redirect' => route('flight.callback'),
         ]);
 
         /** @var Migration $migration */
@@ -33,6 +33,7 @@ class TestCase extends TestbenchTestCase
             FlightServiceProvider::class,
         ];
     }
+
     protected function getApplicationAliases($app)
     {
         return [
@@ -41,4 +42,3 @@ class TestCase extends TestbenchTestCase
         ];
     }
 }
-

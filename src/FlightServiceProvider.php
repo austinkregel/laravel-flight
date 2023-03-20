@@ -3,9 +3,7 @@
 namespace Kregel\Flight;
 
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Spork\Core\Spork;
 
 class FlightServiceProvider extends ServiceProvider
 {
