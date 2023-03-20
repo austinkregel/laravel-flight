@@ -3,7 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kregel/laravel-flight.svg?style=flat-square)](https://packagist.org/packages/kregel/laravel-flight)
 [![Total Downloads](https://img.shields.io/packagist/dt/kregel/laravel-flight.svg?style=flat-square)](https://packagist.org/packages/kregel/laravel-flight)
 
-This package is meant to provide the most basic authentication setup with Laravel Socialite.
+Streamline your Authentication even further. Integrate with your own internal Laravel Passport instance and enable your users to login however they need to.
+
 Stop dealing with setting up a /login redirect and /callback. Not all apps need their own auth system.
 Sometimes we just want to login with an existing platform like Github, Auth0, or even a custom Laravel Passport instance.
 While this still does have it's own user's table, it's largely used for tracking social users.
@@ -11,7 +12,6 @@ While this still does have it's own user's table, it's largely used for tracking
 
 ### Ok but why?
 Because there are Laravel tools out there that don't come with authentication, but require it to be able to secure them for production access.
-
 
 ## Installation
 
@@ -56,6 +56,32 @@ And under the `$middlewareAliases` portion you can add the following replacement
 'guest' => \Kregel\Flight\Middleware\RedirectIfAuthenticated::class,
 ```
 Both of the above middleware are almost directly taken from the base Laravel app, with minor adjustments for configuration.
+
+## Integrating new socialite providers
+To add a new authentication provider to your app, you'll need to `composer require` their package into your app,
+then add their ExtendSocialite listener to the `community_drivers` page. Once the driver has been added, you'll need
+to open your `config/services.php` file and add the following equivalent for your driver
+. Replacing `driver_name` and `DRIVER_NAME` with your actual driver.
+```php
+'driver_name' => [
+    'client_id' => env('DRIVER_NAME_CLIENT_ID'),
+    'client_secret' => env('DRIVER_NAME_CLIENT_SECRET'),
+    'redirect' => env('DRIVER_NAME_REDIRECT_URI'),
+],
+```
+
+If your preferred driver is github, then it'll look like this:
+```php
+'github' => [
+    'client_id' => env('GITHUB_CLIENT_ID'),
+    'client_secret' => env('GITHUB_CLIENT_SECRET'),
+    'redirect' => env('GITHUB_REDIRECT'),
+],
+```
+
+Lastly, change your `FLIGHT_DRIVER` env var to your preferred driver.
+
+And visit `http://yourwebsite/flight/login`
 
 ### Testing
 
