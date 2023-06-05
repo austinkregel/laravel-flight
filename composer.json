@@ -3,7 +3,9 @@
     "description": "A Laravel Package that uses Laravel Socialite to access Laravel tools like Horizon, and Telescope",
     "keywords": [
         "kregel",
-        "laravel-flight"
+        "laravel-flight",
+        "oauth",
+        "socialite"
     ],
     "homepage": "https://github.com/kregel/laravel-flight",
     "license": "MIT",
@@ -46,11 +48,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kregel\\LaravelFlight\\LaravelFlightServiceProvider"
-            ],
-            "aliases": {
-                "LaravelFlight": "Kregel\\LaravelFlight\\LaravelFlightFacade"
-            }
+                "Kregel\\Flight\\FlightServiceProvider"
+            ]
         }
     }
 }
