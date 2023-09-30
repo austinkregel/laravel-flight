@@ -13,6 +13,10 @@ While this still does have it's own user's table, it's largely used for tracking
 ### Ok but why?
 Because there are Laravel tools out there that don't come with authentication, but require it to be able to secure them for production access.
 
+This package let's you grab your favorite Github, Google, or other supported OAuth provider's credentials, set them in your env, visit `http://yoururl/flight/login` and login. You should be redirected to the auth provider you chose as your `FLIGHT_DRIVER`, and you will then be redirected to `FLIGHT_LOGIN_REDIRECT`.
+
+Users that don't exist at the time of the request will be created unless you explicitly disable registration with an env var (so turn it off after you registery) `FLIGHT_ALLOW_REGISTRATION`
+
 ## Installation
 
 You can install the package via composer:
