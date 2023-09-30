@@ -21,5 +21,5 @@ return [
     ],
     'stateless' => true,
     'scopes' => ['email', 'profile'],
-    'middleware' => ['web', 'auth'],
+    'middleware' => ['web'],
 ];
