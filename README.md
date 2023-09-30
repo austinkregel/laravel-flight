@@ -1,4 +1,6 @@
-# Stop dealing with the basic setup from Socialite.
+# Stop publishing apps with public horizon access.
+
+Secure your apps easily with Laravel Socialite and OAuth. Install this package, configure a few env values, a config/services.php entry, and then login. Never leave your apps unprotected.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kregel/laravel-flight.svg?style=flat-square)](https://packagist.org/packages/kregel/laravel-flight)
 [![Total Downloads](https://img.shields.io/packagist/dt/kregel/laravel-flight.svg?style=flat-square)](https://packagist.org/packages/kregel/laravel-flight)
