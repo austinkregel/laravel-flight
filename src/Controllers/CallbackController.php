@@ -46,6 +46,8 @@ class CallbackController
                             'user_id' => $localUser->id,
                             'service_id' => $user->id,
                             'driver' => $driver,
+                            'created_at' => now(),
+                            'updated_at' => now(),
                         ]);
                 }
             } else {
